@@ -2833,6 +2833,8 @@ def disable_requests_ssl_verification():
         yield
         return
 
+    import requests
+
     old_merge_environment_settings = requests.Session.merge_environment_settings
 
     opened_adapters = set()
