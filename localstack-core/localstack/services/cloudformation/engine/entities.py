@@ -9,6 +9,7 @@ from localstack.aws.api.cloudformation import (
     Parameter,
     StackInstanceComprehensiveStatus,
     StackInstanceStatus,
+    StackSetOperation,
 )
 from localstack.services.cloudformation.engine.parameters import (
     StackParameter,
@@ -61,13 +62,6 @@ class StackInstance:
         self.stack = None
 
 
-class OperationDetail(TypedDict):
-    OperationId: str
-    StackSetId: str
-    Action: str | None
-    Status: str | None
-
-
 @dataclasses.dataclass
 class StackSetMetadata:
     """Metadata for a StackSet"""
@@ -83,7 +77,7 @@ class StackSet:
 
     metadata: StackSetMetadata
     stack_instances: list[StackInstance]
-    operations: dict  # TODO fix it
+    operations: dict[str, StackSetOperation]
 
     def __init__(self, stack_set_request: CreateStackSetInput) -> None:
         self.metadata = StackSetMetadata(
