@@ -54,7 +54,7 @@ class StackInstance:
     """A stack instance belongs to a stack set and is specific to a region / account ID."""
 
     details: StackInstanceDetails
-    # TODO
+    stack: "Stack"  # TODO: fix
 
     def __init__(self, details: StackInstanceDetails) -> None:
         self.details = details
