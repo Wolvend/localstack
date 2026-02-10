@@ -35,10 +35,6 @@ class TestPolicies:
     pass
 
 
-class TestUsers:
-    pass
-
-
 class TestIAMExtensions:
     @markers.aws.validated
     def test_get_user_without_username_as_user(self, create_user, aws_client, region_name):
